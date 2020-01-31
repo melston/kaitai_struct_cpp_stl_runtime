@@ -26,14 +26,12 @@ We are asked to parse data stored in a binary file.  One of the kinds of data we
 to reading is structured as a sequence of 32-bit values interpreted as follows:
 
 | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 | 20 | 19 | 18 | 17 | 16 | 15 | 14 | 13 | 12 | 11 | 10 | 09 | 08 | 07 | 06 | 05 | 04 | 03 | 02 | 01 | 00 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
 | <td colspan=8>CmdId=0x01              |   <td colspan=8>RSVD(0)               |  <td colspan=16>EntryNum                                                      |
 | <td colspan=16>RSVD(0)                                                        |  <td colspan=16>NumWords |
-+
 | <td colspan=32> NumEntries |
 | <td colspan=32> Entry      |
 | <td colspan=32> Entry      |
-+
 
 The first two rows are a common header.  The `CmdId` field identifies a specific subtype of 
 data element and, therefore, how it is to be parsed.  The value 0x01 specifies the 
