@@ -105,7 +105,6 @@ for the application.  Call it `tst.cpp` and populate it with the following:
 #include <fstream>
 #include <kaitai/kaitaistream.h>
 #include "msg.h"
-#include "header.h"
 
 using namespace std;
 
