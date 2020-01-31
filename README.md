@@ -26,11 +26,12 @@ We are asked to parse data stored in a binary file.  One of the kinds of data we
 to reading is structured as a sequence of 32-bit values interpreted as follows:
 
 - uint32_t 0 (Header entry 0):
-	- **EntryNum**: bits 0 to 15 
+	- **EntryNum**: bits 0 to 15.  A message sequence number.  Each message has a unique number
+	  and that number increases monotonically.
 	- **Reserved0** : bits 16 to 23
 	- **CmdId**: bits 24 to 31.  In our example we will restrict this value to 0x01.
 	  This identifies the 'subtype' or 'command type' and provides the mechanism
-	  for understanding what the rest of the buffer.  Each subtype has a different
+	  for understanding the rest of the buffer.  Each subtype has a different
 	  layout.
 - uint32_t 1 (Header entry 1):
 	- **NumWords**: bits 0 to 15.  This tells the function reading from the socket how
