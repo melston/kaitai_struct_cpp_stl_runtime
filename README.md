@@ -181,7 +181,10 @@ g++ tst.cpp -I . msg.cpp kaitai/kaitaistream.cpp -o tst
 
 This almost works.  There is a requirement to have defined a preprocessor macro to 
 support different string encoders.  For our purposes we can use `KS_STR_ENCODING_NONE`.
-So, use the command:
+The other option for this define is `KS_STR_ENCODING_ICONV` to make use of `iconv`
+internally.  Our program doesn't need it so we are using the simpler version.
+
+So, to compile, use the command:
 
 ```
 g++ -DKS_STR_ENCODING_NONE tst.cpp -I . msg.cpp kaitai/kaitaistream.cpp -o tst
