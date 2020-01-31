@@ -26,18 +26,18 @@ We are asked to parse data stored in a binary file.  One of the kinds of data we
 to reading is structured as a sequence of 32-bit values interpreted as follows:
 
 - uint32_t 0 (Header entry 0):
-	-- **EntryNum**: bits 0 to 15 
-	-- **Reserved0** : bits 16 to 23
-	-- **CmdId**: bits 24 to 31
+	- **EntryNum**: bits 0 to 15 
+	- **Reserved0** : bits 16 to 23
+	- **CmdId**: bits 24 to 31
 - uint32_t 1 (Header entry 1):
-	-- **NumWords**: bits 0 to 15 
-	-- **Reserved1**: bits 16 to 31
+	- **NumWords**: bits 0 to 15 
+	- **Reserved1**: bits 16 to 31
 - uint32_t 2 (Data Entry 0):
-	-- **NumEntries**: bits 0 to 31
+	- **NumEntries**: bits 0 to 31
 - uint32_t 3 (Data Entry 1):
-	-- **Entry 1**: bits 0 to 31
+	- **Entry 1**: bits 0 to 31
 - uint32_t 4 (Data Entry 2):
-	-- **Entry 2**: bits 0 to 31
+	- **Entry 2**: bits 0 to 31
 - ...
 
 The first two uint32 values are a common header.  The `CmdId` field identifies a specific subtype of 
