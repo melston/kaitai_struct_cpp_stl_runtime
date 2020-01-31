@@ -25,15 +25,22 @@ This is similar to the documentation found elsewhere and keeps the code simple.
 We are asked to parse data stored in a binary file.  One of the kinds of data we need 
 to reading is structured as a sequence of 32-bit values interpreted as follows:
 
-| 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 | 20 | 19 | 18 | 17 | 16 | 15 | 14 | 13 | 12 | 11 | 10 | 09 | 08 | 07 | 06 | 05 | 04 | 03 | 02 | 01 | 00 |
-|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| CmdId=0x01 (8-bits)  ||||||||  RSVD(0) (8-bits)  |||||||| EntryNum (16-bits) ||||||||||||||||
-| RSVD(0) (8-bits)    ||||||||||||||||  NumWords (16-bits) ||||||||||||||||
-| NumEntries (32-bits) ||||||||||||||||||||||||||||||||
-| Entry  (32-bits)     ||||||||||||||||||||||||||||||||
-| Entry  (32-bits)     ||||||||||||||||||||||||||||||||
+- uint32_t 0 (Header entry 0):
+	-- **EntryNum**: bits 0 to 15 
+	-- **Reserved0** : bits 16 to 23
+	-- **CmdId**: bits 24 to 31
+- uint32_t 1 (Header entry 1):
+	-- **NumWords**: bits 0 to 15 
+	-- **Reserved1**: bits 16 to 31
+- uint32_t 2 (Data Entry 0):
+	-- **NumEntries**: bits 0 to 31
+- uint32_t 3 (Data Entry 1):
+	-- **Entry 1**: bits 0 to 31
+- uint32_t 4 (Data Entry 2):
+	-- **Entry 2**: bits 0 to 31
+- ...
 
-The first two rows are a common header.  The `CmdId` field identifies a specific subtype of 
+The first two uint32 values are a common header.  The `CmdId` field identifies a specific subtype of 
 data element and, therefore, how it is to be parsed.  The value 0x01 specifies the 
 elements below the header portion are to be interpreted as shown above.  The 
 `NumWords` element specifies the remaining number of 32-bit values to read.  This ends the 
