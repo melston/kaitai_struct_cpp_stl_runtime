@@ -179,17 +179,20 @@ contains all the code and source files required by the test application.  There 
 code file, `kaitaistream.cpp`, and a number of header files, including `kaitaistream.h`.
 
 The easiest way to include this code in your project is to copy that directory into your
-project directory so now you have a `kaitai` subdirectory in your project.  Change your
-compile command to:
+project directory so now you have a `kaitai` subdirectory in your project containing the
+source and header files you need.  Change your compile command to:
 
 ```
 g++ tst.cpp -I . msg.cpp kaitai/kaitaistream.cpp -o tst
 ```
 
-This almost works.  There is a requirement to have defined a preprocessor macro to 
-support different string encoders.  For our purposes we can use `KS_STR_ENCODING_NONE`.
-The other option for this define is `KS_STR_ENCODING_ICONV` to make use of `iconv`
-internally.  Our program doesn't need it so we are using the simpler version.
+This command adds the current directory to the 'built-in' include paths so that the compiler
+can find files included like `#include <kaitai/kaitaistream.h>`.
+This also compiles the required runtime file.  And it *almost* works.  There is a requirement 
+to have defined a preprocessor macro to support different string encoders when compiling
+`kaitaistream.cpp`.  For our purposes we can use `KS_STR_ENCODING_NONE`.  The other option 
+for this define is `KS_STR_ENCODING_ICONV` to make use of `iconv` internally.  Our program 
+doesn't need it so we are using the simpler version.
 
 So, to compile, use the command:
 
