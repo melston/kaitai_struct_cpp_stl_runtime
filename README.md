@@ -38,7 +38,7 @@ to reading is structured as a sequence of 32-bit values interpreted as follows:
 	- **Entry 1**: bits 0 to 31
 - uint32_t 4 (Data Entry 2):
 	- **Entry 2**: bits 0 to 31
-- ...
+- ... for a total of `NumEntries` Entry values.
 
 The first two uint32 values are a common header.  The `CmdId` field identifies a specific subtype of 
 data element and, therefore, how it is to be parsed.  The value 0x01 specifies the 
@@ -103,6 +103,7 @@ using namespace std;
 
 int main(int argc, char**argv)
 {
+    // Start by populating the file we are going to read/parse.
 	uint32_t data[] = {
 		0x0d000102,  // Header 1
 		0x2,         // Header 2
@@ -125,15 +126,18 @@ int main(int argc, char**argv)
 		return 1;
 	}
 	
+	// Now create the stream we will be parsing from the file's contents.
 	ifstream is("data.dat", ios::in | ios::binary);
 	if (!is) {
 		cout << "Cannot open data file for reading" << endl;
 		return 1;
 	}
 	
+	// Create a kstream from the ifstream and a msg object from the kstream.
 	kaitai::kstream ks(&is);
 	msg_t msg(&ks);
 	
+	// Now inspect the data we have parsed from the data file.
 	std::cout << "Message Header:" << std::endl;
 	std::cout << "  Seq Num:   0x" << std::hex << (int)msg.hdr()->seq_num() << std::endl;
 	std::cout << "  Cmd:       0x" << std::hex << (int)msg.hdr()->cmd() << std::endl;
