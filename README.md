@@ -27,12 +27,12 @@ to reading is structured as a sequence of 32-bit values interpreted as follows:
 
 | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 | 20 | 19 | 18 | 17 | 16 | 15 | 14 | 13 | 12 | 11 | 10 | 09 | 08 | 07 | 06 | 05 | 04 | 03 | 02 | 01 | 00 |
 |----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| CmdId = 0x01 <td colspan=8>           |   RSVD(0) <td colspan=8>              |  EntryNum <td colspan=16>                                                     |
-| RSVD(0) <td colspan=16>                                                       |  NumWords <td colspan=16> |
-| -
-| NumEntries <td colspan=32> |
-| Entry <td colspan=32> |
-| Entry <td colspan=32> |
+| <td colspan=8> CmdId = 0x01           |   <td colspan=8>  RSVD(0)             |  <td colspan=16>  EntryNum                                                    |
+| <td colspan=16> RSVD(0)                                                       |  <td colspan=16>  NumWords |
+| <td colspan=32> --- |
+| <td colspan=32> NumEntries |
+| <td colspan=32> Entry      |
+| <td colspan=32> Entry      |
 | -
 
 The first two rows are a common header.  The `CmdId` field identifies a specific subtype of 
@@ -155,7 +155,7 @@ it to your application.  The simplest way to do this is to first clone the proje
 test application directory):
 
 ```
-git clone https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime kaitai`
+git clone https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime kaitai
 ```
 
 This creates a directory, `kaitai` with a subdirectory also named `kaitai`.  This subdirectory
