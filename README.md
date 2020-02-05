@@ -65,8 +65,6 @@ following:
 meta:
   id: msg
   endian: le
-  imports:
-    - header
 seq:
   - id: hdr
     type: header
